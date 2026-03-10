@@ -1,0 +1,23 @@
+Hola esta es una historia random disfruten 
+
+---
+
+## Portada del Proyecto
+![Historia Cover](https://files.catbox.moe/2zx8t5.jpeg)
+
+---
+
+>**NOTA** si alguien se ofende pues no me inporta es humor y diversoon 
+
+
+|💧Rol | 👤 Desarrollador |
+| :--- | :--- |
+| **Lead Dev** | [Klee](https://github.com/kevinreyes-garcia-rgb/) |
+
+## 🛠️ Instalación y Uso
+
+Si quieres leer la historia solo copia el link de abajo y acsede a el con google:
+
+1. **Clonar el repositorio:**
+   ```bash
+   https://kevinreyes-garcia-rgb.github.io/history/
