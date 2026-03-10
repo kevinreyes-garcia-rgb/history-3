@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Velo del Abismo: Frainis y Sezar</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0a0a12;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            color: white;
+        }
+
+        /* --- PORTADA --- */
+        #portada {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://files.catbox.moe/fc4tnd.jpg') no-repeat center center;
+            background-size: cover;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+            cursor: pointer;
+        }
+
+        #portada::after {
+            content: "HACER CLIC PARA ENTRAR";
+            background: rgba(0, 0, 0, 0.6);
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: 2px solid #00d4ff;
+            letter-spacing: 2px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; transform: scale(1.05); }
+            100% { opacity: 0.7; }
+        }
+
+        .slide-away {
+            transform: translateX(-100%);
+        }
+
+        /* --- CONTENIDO DEL CUENTO --- */
+        #game-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding-bottom: 50px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), #1a1a2e);
+        }
+
+        .text-box {
+            width: 80%;
+            max-width: 800px;
+            background: rgba(20, 20, 35, 0.85);
+            border: 2px solid #70a1ff;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 0 20px rgba(112, 161, 255, 0.3);
+            min-height: 120px;
+            display: none; /* Se muestran con JS */
+            animation: fadeIn 0.5s ease;
+        }
+
+        .text-box.active {
+            display: block;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #70a1ff;
+            font-size: 1.2em;
+            text-transform: uppercase;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+
+        /* --- BOTÓN --- */
+        #next-btn {
+            margin-top: 20px;
+            padding: 12px 40px;
+            background: #4834d4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        #next-btn:hover {
+            background: #686de0;
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="portada" onclick="entrarAlCuento()"></div>
+
+    <div id="game-container">
+        
+        <div class="text-box active" id="box-1">
+            <h2>Coralton</h2>
+            <p>En el corazón de Coralton, el amor de Frainis y Sezar era la envidia de los siete mares. Pero el destino es caprichoso y cruel...</p>
+        </div>
+
+        <div class="text-box" id="box-2">
+            <h2>La Tragedia</h2>
+            <p>Sin previo aviso, el mar reclamó a Frainis. No hubo tiempo para despedidas, solo el silencio helado de las olas.</p>
+        </div>
+
+        <div class="text-box" id="box-3">
+            <h2>El Descenso</h2>
+            <p>Sezar no aceptó el fin. "Si ella no está en este mundo, iré al siguiente", susurró mientras se sumergía en el abismo prohibido.</p>
+        </div>
+
+        <div class="text-box" id="box-4">
+            <h2>Eternidad</h2>
+            <p>Cruzando el Portal de las Almas, Sezar encontró a su amada. Allí, donde el tiempo no existe, Frainis y Sezar se volvieron uno con el océano eterno.</p>
+        </div>
+
+        <button id="next-btn" onclick="siguienteTexto()">SIGUIENTE</button>
+    </div>
+
+    <script>
+        let pasoActual = 1;
+        const totalPasos = 4;
+
+        function entrarAlCuento() {
+            document.getElementById('portada').classList.add('slide-away');
+        }
+
+        function siguienteTexto() {
+            // Ocultar actual
+            document.getElementById(`box-${pasoActual}`).classList.remove('active');
+            
+            // Incrementar o reiniciar
+            pasoActual++;
+            if (pasoActual > totalPasos) {
+                pasoActual = 1;
+            }
+
+            // Mostrar siguiente
+            document.getElementById(`box-${pasoActual}`).classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
